@@ -12,4 +12,4 @@ Examples:
 
     from statsnz import statsnz
 
-    region_example = statsnz("YOUR_API_KEY",172.323,-41.242).get_region()
+    region_example = statsnz("YOUR_API_KEY",-41.242,172.323).get_region()

@@ -13,3 +13,8 @@ Examples:
     from statsnz import statsnz
 
     region_example = statsnz("YOUR_API_KEY",-41.242,172.323).get_region()
+
+
+  Or TLA:
+
+    region_example = statsnz("YOUR_API_KEY",-41.242,172.323).get_region()

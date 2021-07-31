@@ -27,7 +27,7 @@ class statsnz:
     def get_tla(self):
         try:
 
-            req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=105135&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,self.lat,self.long)).json()
+            req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=105135&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,self.long,self.lat)).json()
             req = req['vectorQuery']
             req = req['layers']
             req = req['105135']
@@ -45,7 +45,7 @@ class statsnz:
         try:
 
 
-            req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=104254&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,self.lat,self.long)).json()
+            req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=104254&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,self.long,self.lat)).json()
             req = req['vectorQuery']
             req = req['layers']
             req = req['104254']

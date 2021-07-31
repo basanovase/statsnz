@@ -19,12 +19,14 @@ class statsnz:
     Base class. Initialise your API key, and pass the coordinates
 
     """
+    
     def __init__(self, key, lat, long):
         self.key = key
         self.lat = lat
         self.long = long
 
     def get_tla(self):
+
         """
             Uses area layer: https://datafinder.stats.govt.nz/layer/105135-territorial-authority-local-board-2021-generalised/
         """
@@ -77,8 +79,6 @@ class statsnz:
         """
             Uses area layer: https://datafinder.stats.govt.nz/layer/105158-urban-rural-2021-generalised/
         """
-
-
         try:
 
 
@@ -90,7 +90,7 @@ class statsnz:
             req = req[0]
             req = req['properties']
             req = req['REGC2020_V1_00_NAME']
-            
+
             return req
 
         except Exception as e:

@@ -1,6 +1,6 @@
 # statsnz
 
-A collection of functions to enable ease of use of the various Stats NZ APIs
+A collection of functions to enable ease of use of the various Stats NZ APIs, in python.
 
 Installion:
 

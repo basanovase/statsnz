@@ -12,9 +12,9 @@ Examples:
 
     from statsnz import statsnz
 
-    region_example = statsnz("YOUR_API_KEY",-41.242,172.323).get_region()
+    region_example = statsnz("YOUR_API_KEY").get_region(-41.242,172.323)
 
 
   Or TLA:
 
-    region_example = statsnz("YOUR_API_KEY",-41.242,172.323).get_region()
+    region_example = statsnz("YOUR_API_KEY").get_tla(-41.242,172.323)

@@ -19,20 +19,19 @@ class statsnz:
     Base class. Initialise your API key, and pass the coordinates
 
     """
-    
-    def __init__(self, key, lat, long):
-        self.key = key
-        self.lat = lat
-        self.long = long
 
-    def get_tla(self):
+    def __init__(self, key):
+        self.key = key
+
+
+    def get_tla(self, lat, long):
 
         """
             Uses area layer: https://datafinder.stats.govt.nz/layer/105135-territorial-authority-local-board-2021-generalised/
         """
         try:
 
-            req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=105135&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,self.long,self.lat)).json()
+            req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=105135&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,long,lat)).json()
             req = req['vectorQuery']
             req = req['layers']
             req = req['105135']
@@ -48,7 +47,7 @@ class statsnz:
 
             return req
 
-    def get_region(self):
+    def get_region(self, lat, long):
 
         """
             Uses area layer: https://datafinder.stats.govt.nz/layer/104254-regional-council-2020-generalised/
@@ -56,7 +55,7 @@ class statsnz:
         try:
 
 
-            req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=104254&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,self.long,self.lat)).json()
+            req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=104254&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,long,lat)).json()
             req = req['vectorQuery']
             req = req['layers']
             req = req['104254']
@@ -74,7 +73,7 @@ class statsnz:
             return req
 
 
-    def get_urban_rural(self):
+    def get_urban_rural(self, lat, long):
 
         """
             Uses area layer: https://datafinder.stats.govt.nz/layer/105158-urban-rural-2021-generalised/
@@ -82,7 +81,7 @@ class statsnz:
         try:
 
 
-            req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=105158&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,self.long,self.lat)).json()
+            req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=105158&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,long,lat)).json()
             req = req['vectorQuery']
             req = req['layers']
             req = req['105158']

@@ -88,7 +88,7 @@ class statsnz:
             req = req['features']
             req = req[0]
             req = req['properties']
-            req = req['REGC2020_V1_00_NAME']
+            req = req['UR2021_V1_00_NAME']
 
             return req
 

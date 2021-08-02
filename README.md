@@ -32,11 +32,11 @@ Odata API:
 
 
 
-  statsnz("YOUR_API_KEY").get_region(-41.242,172.323)
-  service = 'https://api.stats.govt.nz/opendata/v1'
-  endpoint = 'EmploymentIndicators'
-  entity = 'Resources'
-  query_option = "$top=10"
+  statsnz = statsnz("YOUR_API_KEY")
+    service = 'https://api.stats.govt.nz/opendata/v1'
+    endpoint = 'EmploymentIndicators'
+    entity = 'Resources'
+    query_option = "$top=10"
 
 
   proxies = {'https': 'your-proxy.co.nz:8080'}  ## proxies = {} if none

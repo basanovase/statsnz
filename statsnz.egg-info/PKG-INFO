@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: statsnz
-Version: 1.0.3
+Version: 1.0.5
 Summary: A collection of functions to enable ease of use of the various Stats NZ APIs
 Home-page: https://github.com/basanovase/statsnz
 Author: Flynn
@@ -14,7 +14,13 @@ Description: # statsnz
         
           pip install statsnz
         
+        
+        
         Examples:
+        
+        
+        Geocoding:
+        
         
           To get the region with a set of coordinates:
         
@@ -27,7 +33,25 @@ Description: # statsnz
         
             region_example = statsnz("YOUR_API_KEY").get_tla(-41.242,172.323)
         
+        
+        
+        Odata API:
+        
+        
+        
+        
+          statsnz("YOUR_API_KEY").get_region(-41.242,172.323)
+          service = 'https://api.stats.govt.nz/opendata/v1'
+          endpoint = 'EmploymentIndicators'
+          entity = 'Resources'
+          query_option = "$top=10"
+        
+        
+          proxies = {'https': 'your-proxy.co.nz:8080'}  ## proxies = {} if none
+        
+          Observations = statsnz.get_odata_api(service, endpoint, entity, query_option, proxies)
+        
 Platform: UNKNOWN
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python :: 3
-Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8

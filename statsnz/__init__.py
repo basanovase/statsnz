@@ -24,6 +24,61 @@ class statsnz:
         self.key = key
 
 
+    def get_odata_api(self, service, endpoint, entity, query_option, proxies):
+        """
+            Query the STATSNZ Odata service - example:
+
+             service = 'https://api.stats.govt.nz/opendata/v1'
+             endpoint = 'EmploymentIndicators'
+             entity = 'Resources'
+             query_option = "$top=10"
+
+
+             proxies = {'https': 'your-proxy.co.nz:8080'}  ## proxies = {} if none
+             Observations = statsnz.get_odata_api(service, endpoint, entity, query_option, proxies)
+
+        """
+
+        header_data = {'Ocp-Apim-Subscription-Key': self.key}
+
+        proxies = proxies
+        url = service + '/' + endpoint + '/' + entity + '?' + query_option
+        top_query = "$top" in query_option
+        results = pd.DataFrame()
+
+
+        while url == True:
+
+            try:
+                req = requests.get(url,header_data=header_data,proxies=proxies)
+                req.raise_for_status()
+
+            # raise request errors
+            except Exception as E:
+                print(str(E))
+
+                break
+            #Convert to JSON
+            df = pd.json_normalize(r.json()['value'])
+            results = pd.concat([results,df])
+
+            try:
+                url = r.json()['@odata.nextLink']
+
+                if top_query:
+                    url = None
+            except KeyError:
+                url = None
+
+            print('.', end = ' ', flush = True)
+
+        print(len(results.index),'Obs retrieved')
+
+        return results
+
+
+
+
     def get_tla(self, lat, long):
 
         """
@@ -79,6 +134,7 @@ class statsnz:
             Uses area layer: https://datafinder.stats.govt.nz/layer/105158-urban-rural-2021-generalised/
         """
         try:
+
 
 
             req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=105158&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,long,lat)).json()

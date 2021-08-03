@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: statsnz
-Version: 1.0.5
+Version: 1.0.6
 Summary: A collection of functions to enable ease of use of the various Stats NZ APIs
 Home-page: https://github.com/basanovase/statsnz
 Author: Flynn
@@ -38,18 +38,17 @@ Description: # statsnz
         Odata API:
         
         
+            from statsnz import statsnz
+        
+            statsnz = statsnz("YOUR_API_KEY")
+            service = 'https://api.stats.govt.nz/opendata/v1'
+            endpoint = 'EmploymentIndicators'
+            entity = 'Resources'
+            query_option = "10" ##Top 10 records
         
         
-          statsnz("YOUR_API_KEY").get_region(-41.242,172.323)
-          service = 'https://api.stats.govt.nz/opendata/v1'
-          endpoint = 'EmploymentIndicators'
-          entity = 'Resources'
-          query_option = "$top=10"
         
-        
-          proxies = {'https': 'your-proxy.co.nz:8080'}  ## proxies = {} if none
-        
-          Observations = statsnz.get_odata_api(service, endpoint, entity, query_option, proxies)
+          Observations = statsnz.get_odata_api(service, endpoint, entity, query_option)
         
 Platform: UNKNOWN
 Classifier: License :: OSI Approved :: MIT License

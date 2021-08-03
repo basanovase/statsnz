@@ -1,6 +1,6 @@
 # statsnz
 
-A collection of functions to enable ease of use of the various Stats NZ APIs, in python.
+A collection of functions to enable ease of use of the various Stats New Zealand APIs, in python.
 
 Installion:
 
@@ -26,6 +26,10 @@ Geocoding:
     region_example = statsnz("YOUR_API_KEY").get_tla(-41.242,172.323)
 
 
+  Or custom layer:
+
+    region_example = statsnz("YOUR_API_KEY").get_custom(-41.242,172.323)
+
 
 Odata API:
 
@@ -40,4 +44,4 @@ Odata API:
 
 
 
-  Observations = statsnz.get_odata_api(service, endpoint, entity, query_option)
+    Observations = statsnz.get_odata_api(service, endpoint, entity, query_option)

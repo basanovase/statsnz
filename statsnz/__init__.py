@@ -24,33 +24,38 @@ class statsnz:
         self.key = key
 
 
-    def get_odata_api(self, service, endpoint, entity, query_option, proxies):
+    def get_odata_api(self, service, endpoint, entity, query_no):
         """
             Query the STATSNZ Odata service - example:
 
-             service = 'https://api.stats.govt.nz/opendata/v1'
-             endpoint = 'EmploymentIndicators'
-             entity = 'Resources'
-             query_option = "$top=10"
+
+            takes the service name, the required api, and the number of records:
+
+                 service = 'https://api.stats.govt.nz/opendata/v1'
+                 endpoint = 'EmploymentIndicators'
+                 entity = 'Resources'
+                 query_no = "10"
 
 
-             proxies = {'https': 'your-proxy.co.nz:8080'}  ## proxies = {} if none
-             Observations = statsnz.get_odata_api(service, endpoint, entity, query_option, proxies)
+
+                 Observations = statsnz.get_odata_api(service, endpoint, entity, query_no)
 
         """
 
-        header_data = {'Ocp-Apim-Subscription-Key': self.key}
-
-        proxies = proxies
-        url = service + '/' + endpoint + '/' + entity + '?' + query_option
-        top_query = "$top" in query_option
+        api_key = self.key
+        query_no = "$top={}".format(query_no)
+        url = service + '/' + endpoint + '/' + entity + '?' + query_no
+        top_query = "$top" in query_no
         results = pd.DataFrame()
 
 
-        while url == True:
+        while url:
 
             try:
-                req = requests.get(url,header_data=header_data,proxies=proxies)
+
+                ##Request header must contant the below + api key
+                req = requests.get(url,headers={'Ocp-Apim-Subscription-Key': api_key})
+
                 req.raise_for_status()
 
             # raise request errors
@@ -59,20 +64,20 @@ class statsnz:
 
                 break
             #Convert to JSON
-            df = pd.json_normalize(r.json()['value'])
+            df = pd.json_normalize(req.json()['value'])
             results = pd.concat([results,df])
 
             try:
-                url = r.json()['@odata.nextLink']
+                url = req.json()['@odata.nextLink']
 
                 if top_query:
                     url = None
             except KeyError:
                 url = None
 
-            print('.', end = ' ', flush = True)
+            #print('.', end = ' ', flush = True)
 
-        print(len(results.index),'Obs retrieved')
+        print(str(len(results))+" row items received")
 
         return results
 

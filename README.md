@@ -30,15 +30,14 @@ Geocoding:
 Odata API:
 
 
+    from statsnz import statsnz
 
-
-  statsnz = statsnz("YOUR_API_KEY")
+    statsnz = statsnz("YOUR_API_KEY")
     service = 'https://api.stats.govt.nz/opendata/v1'
     endpoint = 'EmploymentIndicators'
     entity = 'Resources'
-    query_option = "$top=10"
+    query_option = "10" ##Top 10 records
 
 
-  proxies = {'https': 'your-proxy.co.nz:8080'}  ## proxies = {} if none
 
-  Observations = statsnz.get_odata_api(service, endpoint, entity, query_option, proxies)
+  Observations = statsnz.get_odata_api(service, endpoint, entity, query_option)

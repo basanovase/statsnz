@@ -26,6 +26,10 @@ Geocoding:
     region_example = statsnz("YOUR_API_KEY").get_tla(-41.242,172.323)
 
 
+  Or custom layer:
+
+    region_example = statsnz("YOUR_API_KEY").get_custom(-41.242,172.323)
+
 
 Odata API:
 

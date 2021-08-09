@@ -25,8 +25,13 @@ Geocoding:
 
     region_example = statsnz("YOUR_API_KEY").get_tla(-41.242,172.323)
 
+  Or DHB:
 
-  Or custom layer:
+      region_example = statsnz("YOUR_API_KEY").get_dhb(-41.242,172.323)
+
+
+
+  Or a custom layer:
 
     region_example = statsnz("YOUR_API_KEY").get_custom(-41.242,172.323)
 

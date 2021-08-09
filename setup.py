@@ -11,7 +11,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="statsnz",
-    version="1.0.6",
+    version="1.0.7",
     description="A collection of functions to enable ease of use of the various Stats NZ APIs",
     long_description=README,
     long_description_content_type="",

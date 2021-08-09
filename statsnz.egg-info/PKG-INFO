@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: statsnz
-Version: 1.0.6
+Version: 1.0.7
 Summary: A collection of functions to enable ease of use of the various Stats NZ APIs
 Home-page: https://github.com/basanovase/statsnz
 Author: Flynn
@@ -8,7 +8,7 @@ Author-email: flynn.mclean@gmail.com
 License: MIT
 Description: # statsnz
         
-        A collection of functions to enable ease of use of the various Stats NZ APIs, in python.
+        A collection of functions to enable ease of use of the various Stats New Zealand APIs, in python.
         
         Installion:
         
@@ -33,6 +33,15 @@ Description: # statsnz
         
             region_example = statsnz("YOUR_API_KEY").get_tla(-41.242,172.323)
         
+          Or DHB:
+        
+              region_example = statsnz("YOUR_API_KEY").get_dhb(-41.242,172.323)
+        
+        
+        
+          Or a custom layer:
+        
+            region_example = statsnz("YOUR_API_KEY").get_custom(-41.242,172.323)
         
         
         Odata API:
@@ -48,7 +57,7 @@ Description: # statsnz
         
         
         
-          Observations = statsnz.get_odata_api(service, endpoint, entity, query_option)
+            Observations = statsnz.get_odata_api(service, endpoint, entity, query_option)
         
 Platform: UNKNOWN
 Classifier: License :: OSI Approved :: MIT License

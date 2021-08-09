@@ -159,6 +159,33 @@ class statsnz:
 
             return req
 
+
+    def get_dhb(self, lat, long):
+
+        """
+            https://datafinder.stats.govt.nz/layer/87883-district-health-board-2015/webservices/
+        """
+        try:
+
+
+
+            req = requests.get("https://datafinder.stats.govt.nz/services/query/v1/vector.json?key={}&layer=87883&x={}&y={}&max_results=3&radius=10000&geometry=true&with_field_names=true".format(self.key,long,lat)).json()
+            req = req['vectorQuery']
+            req = req['layers']
+            req = req['87883']
+            req = req['features']
+            req = req[0]
+            req = req['properties']
+            req = req['DHB2015_Name']
+
+            return req
+
+        except Exception as e:
+
+            req = "request_error: " + str(e)
+
+            return req
+
     def get_custom_layer(self, layer_id, lat, long):
         """
             Specify an area layer for use. Response as JSON.

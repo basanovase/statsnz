@@ -1,4 +1,4 @@
-# statsnz
+<h1>statsnz</h1>
 
 A collection of functions to enable ease of use of the various Stats New Zealand APIs, in python.
 
@@ -8,7 +8,7 @@ Installion:
 
 
 
-Examples:
+<h2>Examples:</h2>
 
 
 Geocoding:

@@ -2,6 +2,7 @@
 
 A collection of functions to enable ease of use of the various Stats New Zealand APIs, in python.
 
+
 Installion:
 
   pip install statsnz

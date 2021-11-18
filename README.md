@@ -50,4 +50,4 @@ Odata API:
 
 
 
-    Observations = statsnz.get_odata_api(service, endpoint, entity, query_option)
+    Observations = statsnz.statsnz.get_odata_api(service, endpoint, entity, query_option)

@@ -17,6 +17,25 @@ Geocoding:
 
   To get the region with a set of coordinates:
 
+  Below is the core method, other methods below have been retained for legacy compatibility, but but note they're hardcoded to:
+
+
+```python
+from statsnz import StatsNZ
+stats = StatsNZ("YOUR_API_KEY")
+# Example using the 2015 DHB layer
+layer_id = 87883
+lat = -41.242
+long = 172.323
+key_name = 'DHB2015_Name'
+```
+
+
+LEGACY EXAMPLES
+
+dhb_example = stats.get_area_layer(layer_id, lat, long, key_name)
+print(dhb_example)
+
     from statsnz import statsnz
 
     region_example = statsnz.statsnz("YOUR_API_KEY").get_region(-41.242,172.323)
